@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: hsl(0 0% 99%);
+  --fg: hsl(0 0% 7%);
+  --accent: hsl(210 100% 45%);
+  --muted: hsl(0 0% 80%);
+}
+
+[data-theme="dark"] {
+  --bg: hsl(0 0% 7%);
+  --fg: hsl(0 0% 96%);
+  --accent: hsl(210 100% 62%);
+  --muted: hsl(0 0% 30%);
+}
+
+body {
+  @apply bg-background text-foreground antialiased;
+  font-feature-settings: "liga" 1, "kern" 1;
+}
+
+a {
+  @apply text-foreground underline-offset-4 transition-colors hover:text-accent;
+}
+
+.container-grid {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: var(--bg);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.skip-link:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  background: var(--fg);
+  color: var(--bg);
+  z-index: 999;
+}
